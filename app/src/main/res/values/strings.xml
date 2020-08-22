@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">TodoLIST</string>
+    <string name="username">用户名</string>
 </resources>
