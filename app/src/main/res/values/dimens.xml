@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="image">120dp</dimen>
+    <dimen name="text_height">40dp</dimen>
+    <dimen name="text_top">80dp</dimen>
+    <dimen name="text_margin">50dp</dimen>
+    <dimen name="button_height">60dp</dimen>
+    <dimen name="between">20dp</dimen>
+    <dimen name="button_size">20sp</dimen>
+</resources>
