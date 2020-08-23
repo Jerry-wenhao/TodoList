@@ -3,4 +3,6 @@
     <string name="username">用户名</string>
     <string name="password">密码</string>
     <string name="button">登录</string>
+    <string name="user_false"><![CDATA[Username must be >3 characters]]></string>
+    <string name="password_false"><![CDATA[Password must be >5 characters]]></string>
 </resources>
