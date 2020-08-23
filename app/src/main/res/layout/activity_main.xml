@@ -32,6 +32,7 @@
             android:inputType="textPassword" />
 
         <ImageButton
+            android:id="@+id/username_error_image"
             android:layout_width="@dimen/error_image"
             android:layout_height="@dimen/error_image"
             android:layout_marginStart="@dimen/start"
@@ -39,17 +40,19 @@
             android:layout_marginEnd="@dimen/button_end"
             android:background="@drawable/false_button_shape"
             android:scaleType="fitXY"
-            android:src="@drawable/false_button" />
+            android:src="@drawable/false_button"
+            android:visibility="invisible" />
 
         <TextView
+            android:id="@+id/username_error_text"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/error_image"
+            android:layout_marginStart="@dimen/false_start"
+            android:layout_marginTop="@dimen/false_top"
+            android:background="@color/error_text_background"
             android:text="@string/user_false"
             android:textColor="@color/error_text"
-            android:layout_marginTop="@dimen/false_top"
-            android:layout_marginStart="@dimen/false_start"
-            android:background="@color/error_text_background"
-            />
+            android:visibility="invisible" />
 
         <EditText
             android:id="@+id/username"
@@ -63,6 +66,7 @@
             android:inputType="text" />
 
         <ImageButton
+            android:id="@+id/password_error_image"
             android:layout_width="@dimen/error_image"
             android:layout_height="@dimen/error_image"
             android:layout_marginStart="@dimen/start"
@@ -70,16 +74,19 @@
             android:layout_marginEnd="@dimen/button_end"
             android:background="@drawable/false_button_shape"
             android:scaleType="fitXY"
-            android:src="@drawable/false_button" />
+            android:src="@drawable/false_button"
+            android:visibility="invisible" />
 
         <TextView
+            android:id="@+id/password_error_text"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/error_image"
+            android:layout_marginStart="@dimen/password_false_start"
+            android:layout_marginTop="@dimen/password_false_top"
+            android:background="@color/error_text_background"
             android:text="@string/password_false"
             android:textColor="@color/error_text"
-            android:layout_marginTop="@dimen/password_false_top"
-            android:layout_marginStart="@dimen/password_false_start"
-            android:background="@color/error_text_background"/>
+            android:visibility="invisible" />
     </RelativeLayout>
 
     <Button
