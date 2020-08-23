@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
         decorView.setSystemUiVisibility(uiOptions);
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
-            ((ActionBar) actionBar).hide();
+            (actionBar).hide();
         }
     }
 }
