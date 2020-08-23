@@ -4,7 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.PrimaryKey;
 
-public class Person {
+public class User {
     @NonNull
     @PrimaryKey
     private int id;
