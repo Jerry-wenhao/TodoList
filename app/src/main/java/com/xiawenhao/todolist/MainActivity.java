@@ -4,6 +4,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -49,27 +50,41 @@ public class MainActivity extends AppCompatActivity {
             (actionBar).hide();
         }
     }
-   @OnTextChanged(R.id.username)
-    void usernameInput (CharSequence text) {
+
+    @OnTextChanged(R.id.username)
+    void usernameInput(CharSequence text) {
         String usernamePattern = "^[\\d|a-z|A-Z]{3,12}$";
         Boolean judgeUsername = regularJudge(usernamePattern, text.toString());
-        if(judgeUsername) {
+        if (judgeUsername) {
             hideButton(usernameErrorImage);
         } else {
             showButton(usernameErrorImage);
         }
-   }
+    }
 
     @OnTextChanged(R.id.password)
-    void passwordInput (CharSequence text) {
+    void passwordInput(CharSequence text) {
         String passwordPattern = "^[\\w|\\W]{6,18}$";
         Boolean judgePassword = regularJudge(passwordPattern, text.toString());
-        if(judgePassword) {
+        if (judgePassword) {
             hideButton(passwordErrorImage);
         } else {
             showButton(passwordErrorImage);
         }
     }
+
+    @OnClick({R.id.username_error_image, R.id.password_error_image})
+    void errorButton(View view) {
+        switch (view.getId()) {
+            case R.id.username_error_image:
+                usernameErrorText.setVisibility(View.VISIBLE);
+                break;
+            case R.id.password_error_text:
+                passwordErrorText.setVisibility(View.VISIBLE);
+                break;
+        }
+    }
+
 
     private void showButton(ImageButton usernameErrorImage) {
         usernameErrorImage.setVisibility(View.VISIBLE);
