@@ -51,7 +51,7 @@ public class GetMessage {
                     Gson gson = new Gson();
                     User user = gson.fromJson(result, User.class);
                     users.add(user);
-                    LoadtoUserDatabase(user);
+                    LoadToUserDatabase(user);
                 }
 
             }
@@ -59,7 +59,7 @@ public class GetMessage {
         return users;
     }
 
-    private void LoadtoUserDatabase(User user) {
+    private void LoadToUserDatabase(User user) {
         userDatabase.userDao().insertAll(user);
     }
 }

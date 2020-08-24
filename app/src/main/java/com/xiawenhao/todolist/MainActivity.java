@@ -10,11 +10,15 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
+import butterknife.OnTextChanged;
 
 public class MainActivity extends AppCompatActivity {
-    private static final String url = "https://twc-android-bootcamp.github.io/fake-data/data/user.json";
 
     @BindView(R.id.username)
     EditText username;
@@ -30,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
     TextView passwordErrorText;
     @BindView(R.id.login)
     Button login;
-    private Object User;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,4 +49,41 @@ public class MainActivity extends AppCompatActivity {
             (actionBar).hide();
         }
     }
+   @OnTextChanged(R.id.username)
+    void usernameInput (CharSequence text) {
+        String usernamePattern = "^[\\d|a-z|A-Z]{3,12}$";
+        Boolean judgeUsername = regularJudge(usernamePattern, text.toString());
+        if(judgeUsername) {
+            hideButton(usernameErrorImage);
+        } else {
+            showButton(usernameErrorImage);
+        }
+   }
+
+    @OnTextChanged(R.id.password)
+    void passwordInput (CharSequence text) {
+        String passwordPattern = "^[\\w|\\W]{6,18}$";
+        Boolean judgePassword = regularJudge(passwordPattern, text.toString());
+        if(judgePassword) {
+            hideButton(passwordErrorImage);
+        } else {
+            showButton(passwordErrorImage);
+        }
+    }
+
+    private void showButton(ImageButton usernameErrorImage) {
+        usernameErrorImage.setVisibility(View.VISIBLE);
+    }
+
+    private void hideButton(ImageButton usernameErrorImage) {
+        usernameErrorImage.setVisibility(View.GONE);
+    }
+
+    private Boolean regularJudge(String patternString, String target) {
+        Pattern pattern = Pattern.compile(patternString);
+        Matcher matcher = pattern.matcher(target);
+        return matcher.matches();
+    }
+
+
 }
