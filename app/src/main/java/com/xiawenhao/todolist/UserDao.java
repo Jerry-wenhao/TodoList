@@ -5,16 +5,15 @@ import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 
+import java.util.List;
+
 
 @Dao
 public interface UserDao {
 
-    @Query("SELECT * FROM user LIMIT 0,1")
-    User getUserByName();
+    @Query("SELECT * FROM user")
+    List<User> getAll();
 
     @Insert
-    void insertOne(User user);
-
-    @Delete
-    void delete(User user);
+    void insertAll(User... user);
 }
