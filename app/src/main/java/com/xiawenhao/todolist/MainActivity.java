@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import java.security.MessageDigest;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -54,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
 
     @OnTextChanged(R.id.username)
     void usernameInput(CharSequence text) {
-        String usernamePattern = "^[\\d|a-z|A-Z]{3,12}$";
+        String usernamePattern = "^[a-zA-Z0-9]{3,12}$";
         Boolean judgeUsername = regularJudge(usernamePattern, text.toString());
         if (judgeUsername) {
             hideButton(usernameErrorImage);
@@ -78,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
     void errorButton(View view) {
         switch (view.getId()) {
             case R.id.username_error_image:
-                if(!userNameError) {
+                if (!userNameError) {
                     usernameErrorText.setVisibility(View.VISIBLE);
                     userNameError = true;
                 } else {
@@ -87,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 break;
             case R.id.password_error_image:
-                if(!passwordError) {
+                if (!passwordError) {
                     passwordErrorText.setVisibility(View.VISIBLE);
                     passwordError = true;
                 } else {
