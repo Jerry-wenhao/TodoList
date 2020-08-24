@@ -8,7 +8,7 @@
     <dimen name="between">20dp</dimen>
     <dimen name="button_size">20sp</dimen>
     <dimen name="error_image">20dp</dimen>
-    <dimen name="start">330dp</dimen>
+    <dimen name="start">352dp</dimen>
     <dimen name="button_top">32dp</dimen>
     <dimen name="button_end">40dp</dimen>
     <dimen name="false_top">60dp</dimen>

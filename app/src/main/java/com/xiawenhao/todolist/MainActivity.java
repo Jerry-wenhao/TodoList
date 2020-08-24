@@ -4,7 +4,6 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -35,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
     TextView passwordErrorText;
     @BindView(R.id.login)
     Button login;
+    private boolean userNameError = false;
+    private boolean passwordError = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,10 +78,22 @@ public class MainActivity extends AppCompatActivity {
     void errorButton(View view) {
         switch (view.getId()) {
             case R.id.username_error_image:
-                usernameErrorText.setVisibility(View.VISIBLE);
+                if(!userNameError) {
+                    usernameErrorText.setVisibility(View.VISIBLE);
+                    userNameError = true;
+                } else {
+                    usernameErrorText.setVisibility(View.GONE);
+                    userNameError = false;
+                }
                 break;
-            case R.id.password_error_text:
-                passwordErrorText.setVisibility(View.VISIBLE);
+            case R.id.password_error_image:
+                if(!passwordError) {
+                    passwordErrorText.setVisibility(View.VISIBLE);
+                    passwordError = true;
+                } else {
+                    passwordErrorText.setVisibility(View.GONE);
+                    passwordError = false;
+                }
                 break;
         }
     }
