@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 if (!truePassword.equals(password.getText().toString())) {
                     Toast.makeText(this, "密码错误", Toast.LENGTH_SHORT).show();
-                }else {
+                } else {
                     Intent intent = new Intent(MainActivity.this, ListActivity.class);
                     startActivity(intent);
                     this.finish();
@@ -132,17 +132,18 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
     }
+
     private void loginButtonState() {
         User user = getMessage.getUserList().get(0);
-        if (user.getName().equals(username.getText().toString())
-                && truePassword.equals(password.getText().toString())) {
-            login.setEnabled(true);
-            login.setTextColor(trueMessage);
-            login.setBackgroundResource(R.drawable.true_login_button);
-        } else {
+        if (username.getText().length() < 3 || username.getText().length() > 12 ||
+                password.getText().length() < 6 || password.getText().length() > 18) {
             login.setEnabled(false);
             login.setTextColor(errorMessage);
             login.setBackgroundResource(R.drawable.error_login_button);
+        } else {
+            login.setEnabled(true);
+            login.setTextColor(trueMessage);
+            login.setBackgroundResource(R.drawable.true_login_button);
         }
     }
 
