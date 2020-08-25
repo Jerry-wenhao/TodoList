@@ -17,7 +17,7 @@ import okhttp3.Response;
 
 public class GetMessage {
 
-    private UserDatabase userDatabase = UserDatabase.getInstance(MyApplication.getInstance());
+    private UserDatabase userDatabase = MyApplication.getInstance().userDatabase();
     private static final String url = "https://twc-android-bootcamp.github.io/fake-data/data/user.json";
 
     public List<User> getUserList() {

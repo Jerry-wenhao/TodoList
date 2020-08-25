@@ -3,14 +3,15 @@ package com.xiawenhao.todolist;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import java.security.MessageDigest;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -37,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
     Button login;
     private boolean userNameError = false;
     private boolean passwordError = false;
+    private GetMessage getMessage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,12 +46,33 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
+        getMessage = new GetMessage();
+        getMessage.getUserList();
+
         View decorView = getWindow().getDecorView();
         int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
         decorView.setSystemUiVisibility(uiOptions);
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             (actionBar).hide();
+        }
+    }
+
+    private void loginMessage() {
+        User user = getMessage.getUserList().get(0);
+        if (user != null) {
+            if (!user.getName().equals(username.getText().toString())) {
+                Toast.makeText(this, "用户名不存在", Toast.LENGTH_SHORT).show();
+            } else {
+                if (!user.getPassword().equals(password.getText().toString())) {
+                    Toast.makeText(this, "密码错误", Toast.LENGTH_SHORT).show();
+                }else {
+                    Intent intent = new Intent(MainActivity.this, ListActivity.class);
+                    startActivity(intent);
+                    this.finish();
+                }
+            }
+
         }
     }
 
@@ -75,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    @OnClick({R.id.username_error_image, R.id.password_error_image})
+    @OnClick({R.id.username_error_image, R.id.password_error_image, R.id.login})
     void errorButton(View view) {
         switch (view.getId()) {
             case R.id.username_error_image:
@@ -96,9 +119,11 @@ public class MainActivity extends AppCompatActivity {
                     passwordError = false;
                 }
                 break;
+            case R.id.login:
+                loginMessage();
+                break;
         }
     }
-
 
     private void showButton(ImageButton usernameErrorImage) {
         usernameErrorImage.setVisibility(View.VISIBLE);
