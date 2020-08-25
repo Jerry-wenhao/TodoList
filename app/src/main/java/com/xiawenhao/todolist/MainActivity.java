@@ -3,6 +3,7 @@ package com.xiawenhao.todolist;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.bluetooth.BluetoothAdapter;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import butterknife.BindColor;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -36,9 +38,14 @@ public class MainActivity extends AppCompatActivity {
     TextView passwordErrorText;
     @BindView(R.id.login)
     Button login;
+    @BindColor(R.color.error_text)
+    int trueMessage;
+    @BindColor(R.color.error_text_background)
+    int errorMessage;
     private boolean userNameError = false;
     private boolean passwordError = false;
     private GetMessage getMessage;
+    private static final String truePassword = "123456";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
             if (!user.getName().equals(username.getText().toString())) {
                 Toast.makeText(this, "用户名不存在", Toast.LENGTH_SHORT).show();
             } else {
-                if (!user.getPassword().equals(password.getText().toString())) {
+                if (!truePassword.equals(password.getText().toString())) {
                     Toast.makeText(this, "密码错误", Toast.LENGTH_SHORT).show();
                 }else {
                     Intent intent = new Intent(MainActivity.this, ListActivity.class);
@@ -79,12 +86,13 @@ public class MainActivity extends AppCompatActivity {
     @OnTextChanged(R.id.username)
     void usernameInput(CharSequence text) {
         String usernamePattern = "^[a-zA-Z0-9]{3,12}$";
-        Boolean judgeUsername = regularJudge(usernamePattern, text.toString());
+        boolean judgeUsername = regularJudge(usernamePattern, text.toString());
         if (judgeUsername) {
             hideButton(usernameErrorImage);
         } else {
             showButton(usernameErrorImage);
         }
+        loginButtonState();
     }
 
     @OnTextChanged(R.id.password)
@@ -96,6 +104,7 @@ public class MainActivity extends AppCompatActivity {
         } else {
             showButton(passwordErrorImage);
         }
+        loginButtonState();
     }
 
     @OnClick({R.id.username_error_image, R.id.password_error_image, R.id.login})
@@ -122,6 +131,19 @@ public class MainActivity extends AppCompatActivity {
             case R.id.login:
                 loginMessage();
                 break;
+        }
+    }
+    private void loginButtonState() {
+        User user = getMessage.getUserList().get(0);
+        if (user.getName().equals(username.getText().toString())
+                && truePassword.equals(password.getText().toString())) {
+            login.setEnabled(true);
+            login.setTextColor(trueMessage);
+            login.setBackgroundResource(R.drawable.true_login_button);
+        } else {
+            login.setEnabled(false);
+            login.setTextColor(errorMessage);
+            login.setBackgroundResource(R.drawable.error_login_button);
         }
     }
 

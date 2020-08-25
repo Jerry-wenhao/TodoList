@@ -4,10 +4,10 @@ import java.security.MessageDigest;
 
 public class MD5Utils {
     public static String digest(String password) {
+        StringBuilder sb = new StringBuilder();
         try {
             MessageDigest digest = MessageDigest.getInstance("MD5");
             byte[] bytes = digest.digest(password.getBytes());
-            StringBuilder sb = new StringBuilder();
             for (byte b : bytes) {
                 int c = b & 0xff;
                 String result = Integer.toHexString(c);
@@ -16,11 +16,9 @@ public class MD5Utils {
                 }
                 sb.append(result);
             }
-            return sb.toString();
         } catch (Exception ex) {
             ex.printStackTrace();
-            return "";
         }
+        return password;
     }
-
 }

@@ -6,4 +6,6 @@
     <color name="login_button">#929292</color>
     <color name="error_text">#FFFFFF</color>
     <color name="error_text_background">#000000</color>
+    <color name="true_button">#03A9F4</color>
+    <color name="error_button">#EAEAEA</color>
 </resources>
