@@ -3,7 +3,9 @@ package com.xiawenhao.todolist;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -45,12 +47,16 @@ public class MainActivity extends AppCompatActivity {
     private boolean passwordError = false;
     private GetMessage getMessage;
     private static final String truePassword = "123456";
+    private SharedPreferences sharedPref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        if (getLoginStatus()) {
+            skipToList();
+        }
 
         getMessage = new GetMessage();
         getMessage.getUserList();
@@ -73,9 +79,8 @@ public class MainActivity extends AppCompatActivity {
                 if (!truePassword.equals(password.getText().toString())) {
                     Toast.makeText(this, "密码错误", Toast.LENGTH_SHORT).show();
                 } else {
-                    Intent intent = new Intent(MainActivity.this, ListActivity.class);
-                    startActivity(intent);
-                    this.finish();
+                    skipToList();
+                    setLoginStatus();
                 }
             }
 
@@ -147,6 +152,15 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public boolean getLoginStatus() {
+        sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+        return sharedPref.getBoolean(DeclareConstants.LOGIN_STATUS, false);
+    }
+
+    public void setLoginStatus() {
+        sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+        sharedPref.edit().putBoolean(DeclareConstants.LOGIN_STATUS, true).apply();
+    }
     private void showButton(ImageButton usernameErrorImage) {
         usernameErrorImage.setVisibility(View.VISIBLE);
     }
@@ -161,5 +175,10 @@ public class MainActivity extends AppCompatActivity {
         return matcher.matches();
     }
 
+    private void skipToList() {
+        Intent intent = new Intent(MainActivity.this, ListActivity.class);
+        startActivity(intent);
+        this.finish();
+    }
 
 }
