@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
         User user = getMessage.getUserList().get(0);
         if (user != null) {
             if (!user.getName().equals(username.getText().toString())) {
-                Toast.makeText(this, "用户名不存在", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "用户不存在", Toast.LENGTH_SHORT).show();
             } else {
                 if (!truePassword.equals(password.getText().toString())) {
                     Toast.makeText(this, "密码错误", Toast.LENGTH_SHORT).show();
