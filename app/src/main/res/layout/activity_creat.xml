@@ -43,11 +43,11 @@
         android:id="@+id/remind"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/date_height"
+        android:layout_marginStart="@dimen/remind_start"
+        android:layout_marginTop="@dimen/remind_top"
         android:text="@string/remind"
         android:textColor="@color/data_text"
         android:textSize="@dimen/remind_size"
-        android:layout_marginTop="@dimen/remind_top"
-        android:layout_marginStart="@dimen/remind_start"
         app:layout_constraintStart_toEndOf="@+id/data"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -64,6 +64,25 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.107"
         app:track="@drawable/switch_button" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.17" />
+
+    <EditText
+        android:id="@+id/item_title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_title"
+        android:autofillHints="Title"
+        android:background="@drawable/title_item"
+        android:hint="@string/item_title"
+        android:inputType="text"
+        android:textSize="@dimen/title_size"
+        app:layout_constraintTop_toTopOf="@+id/guideline"
+        />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
