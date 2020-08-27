@@ -10,4 +10,10 @@
     <style name="SwitchCompatStyle">
         <item name="colorControlActivated">@color/switch_on_color</item>
     </style>
+
+    <style name="CalenderViewDateCustomText" parent="android:TextAppearance.DeviceDefault.Small">
+        <item name="android:textColor">@color/date_text_color</item>
+    </style>
+
+    <color name="date_text_color">#004F72</color>
 </resources>
