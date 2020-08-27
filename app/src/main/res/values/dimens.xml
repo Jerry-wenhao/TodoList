@@ -23,4 +23,16 @@
     <dimen name="add_button_top">500dp</dimen>
     <dimen name="back_button">24dp</dimen>
     <dimen name="back_button_margin">20dp</dimen>
+    <dimen name="checkbox_margin">24dp</dimen>
+    <dimen name="date_size">20sp</dimen>
+    <dimen name="remind_size">16sp</dimen>
+    <dimen name="back_button_width">0dp</dimen>
+    <dimen name="back_button_marginend">364</dimen>
+    <dimen name="back_button_marginEnd">364dp</dimen>
+    <dimen name="date_height">24dp</dimen>
+    <dimen name="date_start">136dp</dimen>
+    <dimen name="date_top">70dp</dimen>
+    <dimen name="remind_top">72dp</dimen>
+    <dimen name="remind_start">100dp</dimen>
+    <dimen name="switch_end">4dp</dimen>
 </resources>
