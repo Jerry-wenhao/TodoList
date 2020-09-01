@@ -12,7 +12,7 @@ import java.util.List;
 @Dao
 public interface ItemDateDao {
     @Query("select * from Itemdate")
-    LiveData<List<ItemDate>> getAll();
+    List<ItemDate> getAll();
 
     @Insert
     void save(ItemDate... reminder);

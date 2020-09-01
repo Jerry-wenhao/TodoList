@@ -42,4 +42,5 @@
     <dimen name="add_items">60dp</dimen>
     <dimen name="add_items_end">28dp</dimen>
     <dimen name="calender_top">140dp</dimen>
+    <dimen name="notice_start">280dp</dimen>
 </resources>

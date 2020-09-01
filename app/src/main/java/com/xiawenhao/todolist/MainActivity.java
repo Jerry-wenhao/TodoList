@@ -90,8 +90,8 @@ public class MainActivity extends AppCompatActivity {
     @OnTextChanged(R.id.username)
     void usernameInput(CharSequence text) {
         String usernamePattern = "^[a-zA-Z0-9]{3,12}$";
-        boolean judgeUsername = regularJudge(usernamePattern, text.toString());
-        if (judgeUsername) {
+        boolean equalOfUsername = matchMessage(usernamePattern, text.toString());
+        if (equalOfUsername) {
             hideButton(usernameErrorImage);
         } else {
             showButton(usernameErrorImage);
@@ -102,8 +102,8 @@ public class MainActivity extends AppCompatActivity {
     @OnTextChanged(R.id.password)
     void passwordInput(CharSequence text) {
         String passwordPattern = "^[\\w|\\W]{6,18}$";
-        Boolean judgePassword = regularJudge(passwordPattern, text.toString());
-        if (judgePassword) {
+        Boolean equalOfPassword = matchMessage(passwordPattern, text.toString());
+        if (equalOfPassword) {
             hideButton(passwordErrorImage);
         } else {
             showButton(passwordErrorImage);
@@ -169,7 +169,7 @@ public class MainActivity extends AppCompatActivity {
         usernameErrorImage.setVisibility(View.GONE);
     }
 
-    private Boolean regularJudge(String patternString, String target) {
+    private Boolean matchMessage(String patternString, String target) {
         Pattern pattern = Pattern.compile(patternString);
         Matcher matcher = pattern.matcher(target);
         return matcher.matches();

@@ -18,4 +18,5 @@
     <color name="back_button">#FFFCFC</color>
     <color name="select_date_color">#FFFFFF</color>
     <color name="date_select_border_color">#B6B6B6</color>
+    <color name="colorOfCheckBox">#03A9F4</color>
 </resources>

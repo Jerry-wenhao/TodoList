@@ -56,12 +56,12 @@
         android:id="@+id/remind"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/date_height"
-        android:layout_marginStart="@dimen/remind_start"
+        android:layout_marginStart="@dimen/notice_start"
         android:layout_marginTop="@dimen/remind_top"
         android:text="@string/remind"
         android:textColor="@color/data_text"
         android:textSize="@dimen/remind_size"
-        app:layout_constraintStart_toEndOf="@+id/select_date"
+        app:layout_constraintStart_toEndOf="@+id/checkBox"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.SwitchCompat

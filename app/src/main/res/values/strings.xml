@@ -11,4 +11,7 @@
     <string name="description">描述....</string>
     <string name="add_items">Add Items</string>
     <string name="back_button">Back button</string>
+    <string name="date_format">%d年%d月%d日</string>
+    <string name="choose_yes">确定</string>
+    <string name="choose_no">取消</string>
 </resources>

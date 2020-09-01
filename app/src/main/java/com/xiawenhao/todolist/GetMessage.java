@@ -26,7 +26,6 @@ public class GetMessage {
             getMessageFromWeb();
         }
         return userList;
-
     }
 
     private List<User> getMessageFromLocalDatabase() {
@@ -61,12 +60,12 @@ public class GetMessage {
                     Gson gson = new Gson();
                     User user = gson.fromJson(result, User.class);
                     users.add(user);
-                    LoadToUserDatabase(user);
+                    LoadUserDatabase(user);
                 }
 
             }
 
-            private void LoadToUserDatabase(User user) {
+            private void LoadUserDatabase(User user) {
                 userDatabase.userDao().insertAll(user);
             }
 
