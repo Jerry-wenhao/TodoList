@@ -125,6 +125,7 @@
         android:layout_width="@dimen/add_items"
         android:layout_height="@dimen/add_items"
         android:layout_marginEnd="@dimen/add_items_end"
+        android:enabled="false"
         android:background="@drawable/add_items"
         android:contentDescription="@string/add_items"
         app:layout_constraintBottom_toBottomOf="parent"

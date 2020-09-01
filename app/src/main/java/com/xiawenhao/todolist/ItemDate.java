@@ -3,13 +3,13 @@ package com.xiawenhao.todolist;
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
-import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
+import java.io.Serializable;
 import java.util.Date;
 
-@Entity
-public class ItemDate {
+@Entity(tableName = "itemDate")
+public class ItemDate implements Serializable {
     @NonNull
     @PrimaryKey
     private int id;
@@ -18,19 +18,18 @@ public class ItemDate {
     @ColumnInfo
     private String description;
     @ColumnInfo
-    private Date date;
-    @ColumnInfo
-    private boolean itemCreated;
+    private boolean hasDone;
     @ColumnInfo
     private boolean isReminded;
+    @ColumnInfo
+    private Date date;
 
-    @Ignore
-    public ItemDate(String title, String description, Date date, boolean itemCreated, boolean isReminded) {
+    public ItemDate(String title, String description, boolean hasDone, boolean isReminded, Date date) {
         this.title = title;
         this.description = description;
-        this.date = date;
-        this.itemCreated = itemCreated;
+        this.hasDone = hasDone;
         this.isReminded = isReminded;
+        this.date = date;
     }
 
     public int getId() {
@@ -53,7 +52,7 @@ public class ItemDate {
         return description;
     }
 
-    public void setDesc(String description) {
+    public void setDescription(String description) {
         this.description = description;
     }
 
@@ -65,20 +64,30 @@ public class ItemDate {
         this.date = date;
     }
 
-    public boolean itemCreated() {
-        return itemCreated;
+    public boolean isHasDone() {
+        return hasDone;
     }
 
-    public void setCreated(boolean finished) {
-        itemCreated = finished;
+    public void setHasDone(boolean hasDone) {
+        this.hasDone = hasDone;
     }
 
     public boolean isReminded() {
         return isReminded;
     }
 
-    public void setReminded(boolean itemReminded) {
-        isReminded = itemReminded;
+    public void setReminded(boolean reminded) {
+        isReminded = reminded;
     }
 
+    @Override
+    public String toString() {
+        return "Item{" +
+                "title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", hasDone=" + hasDone +
+                ", isReminded=" + isReminded +
+                ", dateOfRemind='" + date + '\'' +
+                '}';
+    }
 }

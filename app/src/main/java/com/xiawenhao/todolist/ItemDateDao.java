@@ -1,22 +1,18 @@
 package com.xiawenhao.todolist;
 
-
-import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Update;
 
 import java.util.List;
 
 @Dao
 public interface ItemDateDao {
-    @Query("select * from Itemdate")
+    @Query("select * from itemdate")
     List<ItemDate> getAll();
 
     @Insert
-    void save(ItemDate... reminder);
-
-    @Delete
-    void delete(ItemDate reminder);
+    void insertAll(ItemDate... itemDates);
 }
