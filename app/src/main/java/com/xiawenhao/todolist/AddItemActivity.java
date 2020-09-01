@@ -15,6 +15,8 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.time.LocalDate;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
 
 import butterknife.BindColor;
@@ -48,6 +50,8 @@ public class AddItemActivity extends AppCompatActivity implements DatePicker.OnD
     private int year, month, day;
     boolean isDeadlineSet = false;
     boolean isTitleSet = false;
+    private boolean isEditPage;
+    private ItemDate itemDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,10 +82,22 @@ public class AddItemActivity extends AppCompatActivity implements DatePicker.OnD
         final AlertDialog dialog = builder.create();
         View dialogView = View.inflate(this, R.layout.dialog_date, null);
         final DatePicker datePicker = dialogView.findViewById(R.id.date_picker);
+        datePicker.setMinDate(new Date().getTime());
         dialog.setView(dialogView);
         dialog.show();
         datePicker.init(year, month, day, this);
     }
+
+    private void setDate(Date date) {
+        Calendar calendar = Calendar.getInstance();
+        if (date != null) {
+            calendar.setTime(date);
+        }
+        year = calendar.get(Calendar.YEAR);
+        month = calendar.get(Calendar.MONTH);
+        day = calendar.get(Calendar.DAY_OF_MONTH);
+    }
+
 
     @OnClick({R.id.select_date, R.id.add_item, R.id.back_button})
     void btnClick(View view) {
@@ -105,5 +121,13 @@ public class AddItemActivity extends AppCompatActivity implements DatePicker.OnD
         this.year = year;
         this.month = month;
         this.day = day;
+    }
+
+    private void initDate() {
+        if (isEditPage) {
+            setDate(itemDate.getDate());
+        } else {
+            setDate(null);
+        }
     }
 }
