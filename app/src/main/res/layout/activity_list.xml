@@ -34,6 +34,7 @@
         android:layout_width="@dimen/text_width"
         android:layout_height="@dimen/text_height_show"
         android:textSize="@dimen/month_size"
+        android:gravity="end"
         app:layout_constraintStart_toEndOf="@+id/month_show"
         app:layout_constraintTop_toBottomOf="@+id/week_show" />
 

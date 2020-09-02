@@ -58,4 +58,5 @@
     <dimen name="text_width">200dp</dimen>
     <dimen name="text_height_show">28dp</dimen>
     <dimen name="recycler_top">104dp</dimen>
+    <dimen name="text_show">12dp</dimen>
 </resources>
