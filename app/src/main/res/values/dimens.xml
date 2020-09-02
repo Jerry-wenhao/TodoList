@@ -18,7 +18,7 @@
     <dimen name="password_false_start">48dp</dimen>
     <dimen name="error_image_top">12dp</dimen>
     <dimen name="login_button">60dp</dimen>
-    <dimen name="add_button">80dp</dimen>
+    <dimen name="add_button">60dp</dimen>
     <dimen name="add_button_start">312dp</dimen>
     <dimen name="add_button_top">580dp</dimen>
     <dimen name="back_button">24dp</dimen>
@@ -43,4 +43,19 @@
     <dimen name="add_items_end">28dp</dimen>
     <dimen name="calender_top">140dp</dimen>
     <dimen name="notice_start">280dp</dimen>
+    <dimen name="item_size">16sp</dimen>
+    <dimen name="date_size_show">12sp</dimen>
+    <dimen name="date_show_end">28dp</dimen>
+    <dimen name="item_title_show">52dp</dimen>
+    <dimen name="item_show">12dp</dimen>
+    <dimen name="item_box">80dp</dimen>
+    <dimen name="item_show_top">32dp</dimen>
+    <dimen name="checkbox_show">16dp</dimen>
+    <dimen name="item_top">24dp</dimen>
+    <dimen name="action_bar">40dp</dimen>
+    <dimen name="week_size">24sp</dimen>
+    <dimen name="month_size">12sp</dimen>
+    <dimen name="text_width">200dp</dimen>
+    <dimen name="text_height_show">28dp</dimen>
+    <dimen name="recycler_top">104dp</dimen>
 </resources>

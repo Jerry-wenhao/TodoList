@@ -1,9 +1,6 @@
 package com.xiawenhao.todolist;
 
-import android.os.Build;
-
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 

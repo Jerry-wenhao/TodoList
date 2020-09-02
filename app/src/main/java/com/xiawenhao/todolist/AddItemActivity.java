@@ -59,7 +59,7 @@ public class AddItemActivity extends AppCompatActivity implements DatePicker.OnD
     boolean deadlineSet = false;
     boolean titleSet = false;
     private boolean isEditPage;
-    private ItemDate newItemDate;
+    private ItemDate itemDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,7 +72,7 @@ public class AddItemActivity extends AppCompatActivity implements DatePicker.OnD
         ItemDate taskToEdit = (ItemDate) intent.getSerializableExtra(DeclareConstants.EDIT_TASK_INFO);
         if (taskToEdit != null) {
             isEditPage = true;
-            newItemDate = taskToEdit;
+            itemDate = taskToEdit;
             initDate();
             createEditPage(taskToEdit);
         } else {
@@ -153,18 +153,18 @@ public class AddItemActivity extends AppCompatActivity implements DatePicker.OnD
             @Override
             public void run() {
                 if (isEditPage) {
-                    if (newItemDate != null) {
-                        newItemDate.setHasDone(hasDone.isChecked());
-                        newItemDate.setDate(calendar.getTime());
-                        newItemDate.setReminded(isReminded.isChecked());
-                        newItemDate.setTitle(itemTitle.getText().toString());
-                        newItemDate.setDescription(itemDescription.getText().toString());
+                    if (itemDate != null) {
+                        itemDate.setHasDone(hasDone.isChecked());
+                        itemDate.setDate(calendar.getTime());
+                        itemDate.setReminded(isReminded.isChecked());
+                        itemDate.setTitle(itemTitle.getText().toString());
+                        itemDate.setDescription(itemDescription.getText().toString());
                     }
-                    itemViewModel.updateTaskList(newItemDate);
+                    itemViewModel.updateTaskList(itemDate);
                 } else {
-                    newItemDate = new ItemDate(itemTitle.getText().toString(), itemDescription.getText().toString(),
+                    itemDate = new ItemDate(itemTitle.getText().toString(), itemDescription.getText().toString(),
                             hasDone.isChecked(), isReminded.isChecked(), calendar.getTime());
-                    itemViewModel.insertTask(newItemDate);
+                    itemViewModel.insertTask(itemDate);
                 }
             }
         }.start();
@@ -209,7 +209,7 @@ public class AddItemActivity extends AppCompatActivity implements DatePicker.OnD
 
     private void initDate() {
         if (isEditPage) {
-            setDate(newItemDate.getDate());
+            setDate(itemDate.getDate());
         } else {
             setDate(null);
         }

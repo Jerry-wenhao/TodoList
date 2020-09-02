@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/item_box"
+    android:layout_marginTop="@dimen/item_show">
+
+    <CheckBox
+        android:id="@+id/item_checkbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/checkbox_show"
+        android:layout_marginTop="@dimen/item_top"
+        android:buttonTint="@color/checkbox"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/item_title_show"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/item_title_show"
+        android:textSize="@dimen/item_size"
+        app:layout_constraintTop_toTopOf="@+id/item_checkbox"
+        app:layout_constraintStart_toEndOf="@+id/item_checkbox" />
+
+    <TextView
+        android:id="@+id/date_show"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/date_size_show"
+        android:layout_marginEnd="@dimen/date_show_end"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/item_title_show" />
+</androidx.constraintlayout.widget.ConstraintLayout>
